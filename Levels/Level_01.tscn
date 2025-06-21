@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Terrain/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://items/orange.tscn" type="PackedScene" id=13]
 [ext_resource path="res://items/strawberry.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scene/Mushroom.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scene/Skull.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1049,7 +1050,7 @@ tile_data = PoolIntArray( -524304, 62, 0, -524303, 62, 0, -458768, 62, 0, -45876
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Mushroom" parent="." instance=ExtResource( 15 )]
-position = Vector2( 253, 130 )
+position = Vector2( 283, 113 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1060,7 +1061,7 @@ __meta__ = {
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/sky"]
-position = Vector2( 104, 1 )
+position = Vector2( 100, -23 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
@@ -1069,7 +1070,7 @@ motion_scale = Vector2( 0.6, 0.8 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud-mountain"]
-position = Vector2( 22, -2 )
+position = Vector2( 25, -50 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
@@ -1087,7 +1088,7 @@ motion_scale = Vector2( 0.6, 1 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain-trees"]
-position = Vector2( 21, -3 )
+position = Vector2( 22, -17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
@@ -1096,7 +1097,7 @@ motion_scale = Vector2( 0.8, 1 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="sprite" type="Sprite" parent="ParallaxBackground/fg-tres"]
-position = Vector2( 20, -208 )
+position = Vector2( -37, -212 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
@@ -1154,5 +1155,10 @@ position = Vector2( 616, 96 )
 
 [node name="pineapple2" parent="pineapple" instance=ExtResource( 12 )]
 position = Vector2( 97, 129 )
+
+[node name="Skull" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1394, 113 )
+collision_layer = 2
+collision_mask = 9
 
 [connection signal="body_entered" from="fall zone" to="fall zone" method="_on_fall_zone_body_entered"]

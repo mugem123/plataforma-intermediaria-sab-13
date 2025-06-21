@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Main Characters/Virtual Guy/Run (32x32).png" type="Texture" id=2]
 [ext_resource path="res://assets/Main Characters/Virtual Guy/Idle (32x32).png" type="Texture" id=3]
 [ext_resource path="res://assets/Main Characters/Virtual Guy/Hit (32x32).png" type="Texture" id=4]
 [ext_resource path="res://assets/Main Characters/Virtual Guy/Jump (32x32).png" type="Texture" id=5]
+[ext_resource path="res://assets/Main Characters/Virtual Guy/Fall (32x32).png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 10.5 )
@@ -50,21 +51,19 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=30]
 resource_name = "fall"
-
-[sub_resource type="Animation" id=31]
-resource_name = "hit"
-length = 0.6
+length = 0.1
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("texture:frame")
+tracks/0/path = NodePath("texture:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("texture:texture")
@@ -76,10 +75,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("texture:hframes")
+tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -88,7 +87,48 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "hit"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -133,6 +173,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=32]
 resource_name = "jump"
+length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("texture:texture")
 tracks/0/interp = 1
@@ -213,6 +255,7 @@ tracks/2/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 16, 80 )
+collision_layer = 94
 collision_mask = 14
 script = ExtResource( 1 )
 __meta__ = {
@@ -228,7 +271,6 @@ position = Vector2( 0, 3.5 )
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 playback_speed = 1.5
 anims/RESET = SubResource( 2 )
 anims/fall = SubResource( 30 )
