@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var speed = 64
-export var health = 1
+export var health = 3
 var motion = Vector2.ZERO
 var move_direction = -1
 var gravity = 1200
@@ -15,8 +15,7 @@ func _physics_process(delta: float) -> void:
 		$texture.flip_h = true
 		
 	else:
-		$texture.flip_v = false
-		
+		$texture.flip_h = false
 		
 	_set_animation()
 		
@@ -28,6 +27,7 @@ func _on_anim_animation_finished(anim_name: String) -> void:
 		$ray_wall.scale.x *= -1
 		move_direction *= -1
 		$anim.play("run")
+		
 
 func _set_animation():
 	var anim = "idle"
@@ -37,7 +37,7 @@ func _set_animation():
 		
 	elif motion.x != 0:
 		anim = "run"
-	
+		
 	if hitted == true:
 		anim = "hit"
 	
@@ -48,7 +48,7 @@ func _on_hitbox_body_entered(body):
 	hitted = true
 	health -= 1
 	body.velocity.y -= 300
-	yield(get_tree().create_timer(0.2),"timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	hitted = false
 	if health < 1:
 		queue_free()
