@@ -931,7 +931,7 @@ motion_scale = Vector2( 0.6, 0.8 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud-mountain"]
-position = Vector2( -13, -243 )
+position = Vector2( -10, -217 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
@@ -941,7 +941,7 @@ motion_scale = Vector2( 0.7, 1 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/montain-trees"]
-position = Vector2( -12, -234 )
+position = Vector2( -8, -216 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 centered = false
@@ -951,7 +951,7 @@ motion_scale = Vector2( 0.8, 1 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/fg-tres"]
-position = Vector2( -11, -238 )
+position = Vector2( -1, -207 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
@@ -1011,7 +1011,29 @@ position = Vector2( 477, 113 )
 position = Vector2( 742, 114 )
 
 [node name="FallingPlatform" parent="." instance=ExtResource( 16 )]
-position = Vector2( 114, 103 )
+visible = false
+position = Vector2( 844, 165 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FallingPlatform2" parent="." instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 908, 125 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FallingPlatform3" parent="." instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 988, 153 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FallingPlatform4" parent="." instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 1069, 120 )
 __meta__ = {
 "_edit_group_": true
 }
